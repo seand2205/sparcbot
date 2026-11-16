@@ -18,7 +18,7 @@ sparcbot_driver:
     control_rate_hz: 100.0      # encoder read + /wheel_states publish rate
     cmd_timeout_s: 0.1          # coast if no /wheel_cmd for this long (<= 0 disables)
 
-    wheel_radius_m: 0.050
+    wheel_radius_m: 0.042
     counts_per_rev: 500.0       # encoder counts per gearbox output revolution
     velocity_cutoff_hz: 8.0     # first-order low-pass on wheel velocity (<= 0 disables)
 
@@ -53,7 +53,7 @@ sparcbot_driver:
 # -----------------------------------------------------------------------------
 /**:
   ros__parameters:
-    base_width_m: 0.175         # wheel-to-wheel distance (measure on your robot)
+    base_width_m: 0.159         # wheel-to-wheel distance (measure on your robot)
 
 # -----------------------------------------------------------------------------
 # Wheel velocity controller (feedforward + PID), one block per wheel.
@@ -65,31 +65,31 @@ wheel_controller:
     log_file: ''
 
     left:
-      kp: 0.0
-      ki: 0.0
+      kp: 2.0
+      ki: 8.0
       kd: 0.0
       feedforward:
         forward_static: 0.0
         forward_velocity_gain: 0.0
         reverse_static: 0.0
         reverse_velocity_gain: 0.0
-        forward_breakaway: 0.0
-        reverse_breakaway: 0.0
+        forward_breakaway: 0.09
+        reverse_breakaway: 0.09
         stopped_velocity_threshold: 0.025
         max_command: 1.0
         zero_velocity_threshold: 0.0005
 
     right:
-      kp: 0.0
-      ki: 0.0
+      kp: 1.5
+      ki: 10.0
       kd: 0.0
       feedforward:
         forward_static: 0.0
         forward_velocity_gain: 0.0
         reverse_static: 0.0
         reverse_velocity_gain: 0.0
-        forward_breakaway: 0.0
-        reverse_breakaway: 0.0
+        forward_breakaway: 0.08
+        reverse_breakaway: 0.1
         stopped_velocity_threshold: 0.025
         max_command: 1.0
         zero_velocity_threshold: 0.0005
